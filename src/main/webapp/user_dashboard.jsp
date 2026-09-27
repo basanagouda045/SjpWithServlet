@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>User dashboard</title>
 </head>
 <body>
-
+ 
+  <h1 style="color:blue ">User Dashboard</h1>
 </body>
 </html>

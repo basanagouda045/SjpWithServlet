@@ -11,7 +11,7 @@
 
 <% 	
 		String getMsg = (String) request.getAttribute("successMsg");
-        String message = (String) request.getAttribute("message");
+        String message = (String) request.getAttribute("error");
 		System.out.println("getMsg:" +getMsg);
 		
 		
@@ -31,7 +31,7 @@
 			
 			%>
 			 
-			 <h1 style="color:green"><%=message%></h1>
+			 <h1 style="color:red"><%=message%></h1>
 			
 			
 		 <%

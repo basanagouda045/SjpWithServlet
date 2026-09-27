@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void  doPost(HttpServletRequest req , HttpServletResponse res) throws ServletException, IOException {
 		
+		RequestDispatcher rd = null;
 		
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
@@ -38,6 +39,40 @@ public class LoginServlet extends HttpServlet {
         
         if( p != null) {
         	System.out.println("User Already registered he can login!");
+        	
+        	
+        	String storedPwd = p.getPassword();
+        	String storedEmail = p.getEmail();
+        	String role = p.getRole();
+        	
+        	if(storedEmail.equals(email) && storedPwd.equals(password)) {
+        		System.out.println("HE CAN USE DASHBOARD!!");
+        		
+        		if(p.getRole().equals("user")) {
+        			System.out.println("user dashboard");
+        			rd=req.getRequestDispatcher("user_dashboard.jsp");
+        			rd.forward(req,res);
+        		}
+        		else if(p.getRole().equals("admin")) {
+        			System.out.println("admin dashboard");
+        			rd=req.getRequestDispatcher("admin_dashboard.jsp");
+        			rd.forward(req,res);
+        		}
+        	}
+        	
+        	else {
+        		String error = "INVALID CREDENTIALS";
+        		System.out.println("PASSWORD NOT MATCHING TRY AGAIN");
+        		req.setAttribute("error", error);
+        		 rd = req.getRequestDispatcher("Userlogin.jsp");
+        		rd.forward(req, res);
+        	}
+        	
+        	
+        	
+        	
+        	
+        	
         }
         else {
         	System.out.println("email does not exit !! signup first");
