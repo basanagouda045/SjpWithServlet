@@ -21,8 +21,25 @@ public class AllPlayersServelt extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("all players data");
 		
+		RequestDispatcher rd = null;
+		
 		AdminDAO dao = new AdminDAO();
 		
-		List<Player> player = dao.getAllPlayers();
+		List<Player> players = dao.getAllPlayers();
+		
+		for(Player p : players ) {
+			System.out.println(p);
+		}
+		
+		if(!players.isEmpty()) {
+		req.setAttribute("allplayers", players);
+		rd = req.getRequestDispatcher("allplayers.jsp");
+		rd.forward(req, resp);
+		}
+		else {
+			System.out.println("No players found as database is empty");
+		}
+		
+		
 	}
 }

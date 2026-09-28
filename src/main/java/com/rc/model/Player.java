@@ -2,6 +2,9 @@ package com.rc.model;
 
 public class Player {
  
+	
+
+
 	private int id;
 	private String pName;
 	private String team;
@@ -120,6 +123,12 @@ public class Player {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", pName=" + pName + ", team=" + team + ", jersey=" + jersey + ", phone=" + phone
+				+ ", email=" + email + ", password=" + password + ", role=" + role + "]";
 	}
 
 
